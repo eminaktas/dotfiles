@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# NAVIGATION
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+
+# COMMON DIRECTORIES
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias dc="cd ~/Documents"
+alias p="cd ~/Desktop/Projects"
+alias home="cd ~"
+
+# KUBECTL
+alias k="kubectl"
+
+# GIT
+alias g="git"
+alias gs="git status"
+alias gd="git diff"
+alias gb="git branch"
+alias gc="git checkout"
+alias gp="git push"
+alias gpl="git pull"
+alias gm="git checkout master"
+alias gl="git log --graph --all"
+alias gr="git reset"
+alias gf="git fetch"
+
+# EASIER DOTFILE EDITING
+alias aliases="nano ~/.aliases && . ~/.aliases"
+
+# HELPFUL TERMINAL ALIASES
+alias c="clear"
+alias python="python3"
+
+# SHOW/HIDE HIDDEN FILES
+alias showhidden="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# SHOW/HIDE DESKTOP ICONS
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"

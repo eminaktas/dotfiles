@@ -18,6 +18,7 @@ sync:
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
+	[ -f ~/.aliases ] || ln -s $(PWD)/aliases ~/.aliases
 	[ -f ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist ] || ln -s $(PWD)/io.arslan.dark-mode-notify.plist ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist
 
 	# don't show last login message
@@ -35,6 +36,7 @@ clean:
 	rm -f ~/.gitconfig
 	rm -f ~/.agignore
 	rm -f ~/.agignore
+	rm -f ~/.aliases
 	rm -f ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist
 
 .PHONY: all clean sync 

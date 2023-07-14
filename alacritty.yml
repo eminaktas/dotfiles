@@ -1,6 +1,6 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 import:
-  - "/Users/fatih/.config/alacritty/color.yml"
+  - "~/.config/alacritty/color.yml"
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -58,17 +58,17 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: BerkeleyMono Nerd Font Mono
+    family: SF Mono
     style: Regular
 
   # The bold font face
   bold:
-    family: BerkeleyMono Nerd Font Mono
+    family: SF Mono
     style: Bold
 
   # The italic font face
   italic:
-    family: BerkeleyMono Nerd Font Mono
+    family: SF Mono
     style: Italic
 
   # Point size of the font

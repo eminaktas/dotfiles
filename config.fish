@@ -1,4 +1,7 @@
-set -gxp PATH /opt/homebrew/bin/ /usr/local/opt/python@3.9/libexec/bin /usr/local/sbin $HOME/go/bin
+# My custom aliases
+source ~/.aliases
+
+set -gxp PATH /opt/homebrew/bin /opt/homebrew/sbin /Users/emin.aktas/Library/Python/3.9/bin $HOME/go/bin
 set -gx GOBIN $HOME/go/bin
 set -gx EDITOR nvim
 set -gx FZF_CTRL_T_COMMAND nvim
@@ -31,6 +34,13 @@ status --is-interactive; and source (jump shell fish | psub)
 # It contains work related stuff, some functions, aliases etc...
 source ~/.private.fish
 
-set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
+# set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
+# set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
 
+# https://gist.github.com/paolocarrasco/18ca8fe6e63490ae1be23e84a7039374?permalink_comment_id=4122809#gistcomment-4122809
+# Cannot sign the commits without this parameter.
+set -gx GPG_TTY $(tty)
+set -gx PATH $PATH $HOME/.krew/bin
+
+# Merge all kubeconfig files
+# set -gx KUBECONFIG $(find $HOME/.kube/kcfgctl/ -type f | tr '\n' ':')
