@@ -11,7 +11,7 @@ alias .....="cd ../../../.."
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dc="cd ~/Documents"
-alias p="cd ~/Desktop/Projects"
+alias p="cd ~/Projects"
 alias home="cd ~"
 
 # KUBECTL

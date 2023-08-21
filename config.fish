@@ -1,7 +1,7 @@
 # My custom aliases
 source ~/.aliases
 
-set -gxp PATH $HOME/go/bin /opt/homebrew/bin /usr/local/opt/python@3.9/libexec/bin /usr/local/sbin
+set -gxp PATH $HOME/go/bin /opt/homebrew/bin /usr/local/opt/python@3.9/libexec/bin /usr/local/opt/python@3.11/libexec/bin /usr/local/sbin $HOME/.krew/bin
 set -gx GOBIN $HOME/go/bin
 set -gx EDITOR nvim
 set -gx FZF_CTRL_T_COMMAND nvim
@@ -42,5 +42,4 @@ set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
 
 # https://gist.github.com/paolocarrasco/18ca8fe6e63490ae1be23e84a7039374?permalink_comment_id=4122809#gistcomment-4122809
 # Cannot sign the commits without this parameter.
-# set -gx GPG_TTY $(tty)
-# set -gx PATH $PATH $HOME/.krew/bin
+set -gx GPG_TTY $(tty)

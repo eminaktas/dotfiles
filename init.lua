@@ -188,7 +188,7 @@ require("lazy").setup({
 
   -- fzf extension for telescope with better speed
   {
-    "nvim-telescope/telescope-fzf-native.nvim", run = 'make' 
+    "nvim-telescope/telescope-fzf-native.nvim", build = 'make' 
   },
 
   {'nvim-telescope/telescope-ui-select.nvim' },
