@@ -1,16 +1,9 @@
-[user]
-	name = "Emin Aktas"
-	email = eminaktas34@gmail.com
 [commit]
 	gpgsign = true
 [gpg]
 	program=gpg
 [tag]
 	gpgsign=true
-
-[includeIf "gitdir:~/Code/ps/"]
-    	path = ~/Code/ps/gitconfig
-
 [alias]
 	st = status -sb
 	ci = commit
@@ -25,12 +18,10 @@
 	ls = ls-files
 	# Show files ignored by git:
 	ign = ls-files -o -i --exclude-standard
-
 	shoot = push origin --delete
 	unstage = reset HEAD --
 	prev = checkout -
 	discard = checkout -- 
-
 [color]
 	ui = auto
 [color "branch"]
@@ -61,6 +52,10 @@
 	insteadOf = https://github.com/
 [url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
+[includeIf "gitdir:~/Projects/Personal/"]
+	path = ~/.gitconfig-personal
+[includeIf "gitdir:~/Projects/Professional/"]
+    path = ~/.gitconfig-professional
 [pull]
 	rebase = false
 [init]

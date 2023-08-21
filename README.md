@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-My personal dotfiles. 
+My personal dotfiles.
 
 Please only open pull requests that fix bugs or adds improvements without any
 breaking changes.

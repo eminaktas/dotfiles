@@ -17,6 +17,8 @@ sync:
 	[ -f ~/.tmux/tmux-light.conf ] || ln -s $(PWD)/tmux-light.conf ~/.tmux/tmux-light.conf
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
+	[ -f ~/.gitconfig-personal ] || ln -s $(PWD)/gitconfig-personal ~/.gitconfig-personal
+	[ -f ~/.gitconfig-professional ] || ln -s $(PWD)/gitconfig-professional ~/.gitconfig-professional
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
 	[ -f ~/.aliases ] || ln -s $(PWD)/aliases ~/.aliases
 	[ -f ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist ] || ln -s $(PWD)/io.arslan.dark-mode-notify.plist ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist
@@ -30,10 +32,14 @@ clean:
 	rm -f ~/.config/alacritty/alacritty.yml
 	rm -f ~/.config/alacritty/color.yml
 	rm -f ~/.config/fish/config.fish
-	rm -f ~/.config/fish/functions/
+	rm -rf ~/.config/fish/functions
+	rm -f ~/.tmux/tmux-dark.conf
+	rm -f ~/.tmux/tmux-light.conf
 	rm -f ~/.tmux.conf
 	rm -f ~/.tigrc
 	rm -f ~/.gitconfig
+	rm -f ~/.gitconfig-personal
+	rm -f ~/.gitconfig-professional
 	rm -f ~/.agignore
 	rm -f ~/.agignore
 	rm -f ~/.aliases
