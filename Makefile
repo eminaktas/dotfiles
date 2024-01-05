@@ -6,8 +6,8 @@ sync:
 	mkdir -p ~/.config/nvim
 	mkdir -p ~/.tmux/
 
-	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
-	[ -f ~/.config/alacritty/color.yml ] || ln -s $(PWD)/color.yml ~/.config/alacritty/color.yml
+	[ -f ~/.config/alacritty/alacritty.toml ] || ln -s $(PWD)/alacritty.toml ~/.config/alacritty/alacritty.toml
+	[ -d ~/.config/alacritty/themes ] || ln -s $(PWD)/themes ~/.config/alacritty
 	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/config.fish ~/.config/fish/config.fish
 	[ -d ~/.config/fish/functions/ ] || ln -s $(PWD)/fish/functions ~/.config/fish/functions
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
@@ -29,8 +29,8 @@ sync:
 clean:
 	rm -f ~/.vimrc 
 	rm -f ~/.config/nvim/init.lua
-	rm -f ~/.config/alacritty/alacritty.yml
-	rm -f ~/.config/alacritty/color.yml
+	rm -f ~/.config/alacritty/alacritty.toml
+	rm -rf ~/.config/alacritty/themes
 	rm -f ~/.config/fish/config.fish
 	rm -rf ~/.config/fish/functions
 	rm -f ~/.tmux/tmux-dark.conf
