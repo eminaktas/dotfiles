@@ -4,6 +4,7 @@ sync:
 	mkdir -p ~/.config/fish
 	mkdir -p ~/.config/nvim
 	mkdir -p ~/.config/ghostty
+	mkdir -p ~/.config/zed
 
 	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/config.fish ~/.config/fish/config.fish
 	[ -d ~/.config/fish/functions/ ] || ln -s $(PWD)/fish/functions ~/.config/fish/functions
