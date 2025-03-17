@@ -1,28 +1,25 @@
 all: sync
 
 sync:
-	mkdir -p ~/.config/alacritty
 	mkdir -p ~/.config/fish
 	mkdir -p ~/.config/nvim
-	mkdir -p ~/.tmux/
+	mkdir -p ~/.config/ghostty
+	mkdir -p ~/.config/zed
 
-	[ -f ~/.config/alacritty/alacritty.toml ] || ln -s $(PWD)/alacritty.toml ~/.config/alacritty/alacritty.toml
-	[ -d ~/.config/alacritty/themes ] || ln -s $(PWD)/themes ~/.config/alacritty
 	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/config.fish ~/.config/fish/config.fish
 	[ -d ~/.config/fish/functions/ ] || ln -s $(PWD)/fish/functions ~/.config/fish/functions
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.config/nvim/init.lua ] || ln -s $(PWD)/init.lua ~/.config/nvim/init.lua
-	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmuxconf ~/.tmux.conf
-	[ -f ~/.tmux/tmux-dark.conf ] || ln -s $(PWD)/tmux-dark.conf ~/.tmux/tmux-dark.conf
-	[ -f ~/.tmux/tmux-light.conf ] || ln -s $(PWD)/tmux-light.conf ~/.tmux/tmux-light.conf
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
 	[ -f ~/.gitconfig-personal ] || ln -s $(PWD)/gitconfig-personal ~/.gitconfig-personal
 	[ -f ~/.gitconfig-professional ] || ln -s $(PWD)/gitconfig-professional ~/.gitconfig-professional
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
-	[ -f ~/.aliases ] || ln -s $(PWD)/aliases ~/.aliases
-	[ -f ~/.caliases ] || ln -s $(PWD)/caliases ~/.caliases
-	[ -f ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist ] || ln -s $(PWD)/io.arslan.dark-mode-notify.plist ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist
+	[ -f ~/.config/ghostty/config ] || ln -s $(PWD)/ghostty.config ~/.config/ghostty/config
+
+	[ -f ~/.config/zed/settings.json ] || ln -s $(PWD)/zed-config.json ~/.config/zed/settings.json
+	[ -f ~/.config/zed/keymap.json ] || ln -s $(PWD)/zed-keymap.json ~/.config/zed/keymap.json
+	[ -f ~/.config/zed/tasks.json ] || ln -s $(PWD)/zed-tasks.json ~/.config/zed/tasks.json
 
 	# don't show last login message
 	touch ~/.hushlogin
@@ -30,20 +27,16 @@ sync:
 clean:
 	rm -f ~/.vimrc 
 	rm -f ~/.config/nvim/init.lua
-	rm -f ~/.config/alacritty/alacritty.toml
-	rm -rf ~/.config/alacritty/themes
 	rm -f ~/.config/fish/config.fish
-	rm -rf ~/.config/fish/functions
-	rm -f ~/.tmux/tmux-dark.conf
-	rm -f ~/.tmux/tmux-light.conf
-	rm -f ~/.tmux.conf
+	rm -rf ~/.config/fish/functions/
 	rm -f ~/.tigrc
 	rm -f ~/.gitconfig
 	rm -f ~/.gitconfig-personal
 	rm -f ~/.gitconfig-professional
 	rm -f ~/.agignore
-	rm -f ~/.agignore
-	rm -f ~/.aliases
-	rm -f ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist
+	rm -f ~/.config/ghostty/config
+	rm -f ~/.config/zed/settings.json
+	rm -f ~/.config/zed/keymap.json
+	rm -f ~/.config/zed/tasks.json
 
 .PHONY: all clean sync 
