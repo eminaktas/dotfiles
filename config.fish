@@ -1,6 +1,9 @@
 # My custom aliases
 source ~/.aliases
 
+# Company aliases
+source ~/.caliases
+
 set -gxp PATH $HOME/go/bin /opt/homebrew/bin /usr/local/opt/python@3.9/libexec/bin /usr/local/opt/python@3.11/libexec/bin /usr/local/sbin $HOME/.krew/bin
 set -gx GOBIN $HOME/go/bin
 set -gx EDITOR nvim

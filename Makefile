@@ -21,6 +21,7 @@ sync:
 	[ -f ~/.gitconfig-professional ] || ln -s $(PWD)/gitconfig-professional ~/.gitconfig-professional
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
 	[ -f ~/.aliases ] || ln -s $(PWD)/aliases ~/.aliases
+	[ -f ~/.caliases ] || ln -s $(PWD)/caliases ~/.caliases
 	[ -f ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist ] || ln -s $(PWD)/io.arslan.dark-mode-notify.plist ~/Library/LaunchAgents/io.arslan.dark-mode-notify.plist
 
 	# don't show last login message
