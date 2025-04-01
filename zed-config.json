@@ -12,7 +12,14 @@
     "light": "Gruvbox Light",
     "dark": "Gruvbox Dark Hard"
   },
+  "auto_install_extensions": {
+    "html": true,
+    "make": true,
+    "dockerfile": true
+  },
+  "soft_wrap": "editor_width",
   "features": {
+    "edit_prediction_provider": "zed",
     "copilot": false
   },
   "cursor_blink": false,
@@ -20,10 +27,12 @@
   "scrollbar": {
     "show": "never"
   },
-  "ui_font_size": 14,
-  "ui_font_family": "Berkeley Mono",
+  "ui_font_size": 15,
+  "ui_font_family": "TX-02",
+
+  // font used to render text in the editor
   "buffer_font_size": 14,
-  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_family": "TX-02",
   "buffer_line_height": {
     "custom": 1.25
   },
@@ -55,7 +64,7 @@
   },
   "terminal": {
     "font_size": 14,
-    "font_family": "Berkeley Mono",
+    "font_family": "TX-02",
     "line_height": {
       "custom": 1.25
     }
