@@ -4,7 +4,8 @@ sync:
 	mkdir -p ~/.config/fish
 	mkdir -p ~/.config/nvim
 	mkdir -p ~/.config/ghostty
-	mkdir -p ~/.config/zed
+	mkdir -p ~/.tmux/
+	mkdir -p ~/.claude
 
 	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/config.fish ~/.config/fish/config.fish
 	[ -d ~/.config/fish/functions/ ] || ln -s $(PWD)/fish/functions ~/.config/fish/functions
@@ -20,6 +21,12 @@ sync:
 	[ -f ~/.config/zed/settings.json ] || ln -s $(PWD)/zed-config.json ~/.config/zed/settings.json
 	[ -f ~/.config/zed/keymap.json ] || ln -s $(PWD)/zed-keymap.json ~/.config/zed/keymap.json
 	[ -f ~/.config/zed/tasks.json ] || ln -s $(PWD)/zed-tasks.json ~/.config/zed/tasks.json
+
+	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
+	[ -f ~/.tmux/tmux-dark.conf ] || ln -s $(PWD)/tmux-dark.conf ~/.tmux/tmux-dark.conf
+	[ -f ~/.tmux/tmux-light.conf ] || ln -s $(PWD)/tmux-light.conf ~/.tmux/tmux-light.conf
+
+	[ -d ~/.claude/commands/ ] || ln -s $(PWD)/claude/commands ~/.claude/commands
 
 	# don't show last login message
 	touch ~/.hushlogin
@@ -38,5 +45,8 @@ clean:
 	rm -f ~/.config/zed/settings.json
 	rm -f ~/.config/zed/keymap.json
 	rm -f ~/.config/zed/tasks.json
+	rm -f ~/.tmux.conf
+	rm -rf ~/.claude/commands/
+
 
 .PHONY: all clean sync 

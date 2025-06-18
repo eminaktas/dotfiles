@@ -24,6 +24,9 @@ Notes:
 
 * Enter the bootloader in 3 ways:
 
+NOTE(fatih): Hold Space + Right FN (this corresponds to `QK_BOOT`). If it
+doesn't work, read keymap.c and find where `QK_BOOT` is defined. 
+
 Bootmagic reset: Hold down the key at (0,0) in the matrix (usually the top left key or Escape) and plug in the keyboard
 Physical reset button: press the button on the back of the PCB for at least five seconds
 Keycode in layout: Press the key mapped to QK_BOOT if it is available (escape key, layer 1 of the default keymap)

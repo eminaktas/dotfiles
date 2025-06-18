@@ -1,23 +1,47 @@
 [
   {
+    // root context, put key-bindings here that should work globally and you're
+    // sure there are no other conflicting keybindings
+    "context": "Workspace",
+    "bindings": {
+      ", b": ["task::Spawn", { "task_name": "Go Build" }],
+      ", t": ["task::Spawn", { "task_name": "Go Test" }],
+      ", a": ["task::Spawn", { "task_name": "Go Alternative" }],
+      ", g": "git_panel::ToggleFocus",
+      // ", n": "project_panel::SelectParent",
+      "cmd-ctrl-c": "git_panel::FocusChanges",
+      "cmd-ctrl-n": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-g": "git_panel::ToggleFocus",
+      "cmd-ctrl-n": "project_panel::ToggleFocus"
+    }
+  },
+  {
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
-      // doesn't work, check why
-      // ", space": "buffer_search::Dismiss",
-
       // put key-bindings here if you want them to work in normal & visual mode
+      ", space": "buffer_search::Dismiss",
       "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
+      // "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-l": "workspace::ActivateNextPane",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-w z": "workspace::ToggleZoom",
       "ctrl-w t": "terminal_panel::ToggleFocus",
+      "ctrl-w s": "pane::SplitDown",
+      "ctrl-w ctrl-s": "pane::SplitDown",
+      "ctrl-w v": "pane::SplitRight",
+      "ctrl-w ctrl-v": "pane::SplitRight",
       "g c c": "editor::ToggleComments",
       "shift-k": "editor::Hover",
       "g shift-r": "editor::FindAllReferences",
       "g a": "editor::ToggleCodeActions",
+      "g n": "editor::Rename",
       "ctrl-g": "outline::Toggle",
-      "ctrl-shift-g": "go_to_line::Toggle",
       ", g b": "git::Blame",
       "ctrl-p": "file_finder::Toggle",
       "j": ["vim::Down", { "display_lines": true }],
@@ -25,7 +49,8 @@
       "space": "editor::SelectLargerSyntaxNode",
       "backspace": "editor::SelectSmallerSyntaxNode",
       // filetree
-      ", n": "workspace::ToggleLeftDock"
+      ", n": "project_panel::ToggleFocus",
+      "cmd-ctrl-n": "project_panel::ToggleFocus"
     }
   },
   {
@@ -34,8 +59,21 @@
       // put key-bindings here if you want them to work only in normal mode
       ", v": "editor::GoToDefinitionSplit",
       "g r": "editor::FindAllReferences",
+      // TODO fatih move them to be only called in diagnostic window
       "ctrl-n": "editor::GoToDiagnostic",
       "ctrl-m": "editor::GoToPreviousDiagnostic"
+    }
+  },
+  // Center the cursor on the screen when scrolling and find all references
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+      "n": ["workspace::SendKeystrokes", "n z z"],
+      "shift-n": ["workspace::SendKeystrokes", "shift-n z z"],
+      "shift-g": ["workspace::SendKeystrokes", "shift-g z z"],
+      "g r": "editor::FindAllReferences"
     }
   },
   {
@@ -47,10 +85,14 @@
   },
   {
     "context": "Editor && showing_completions",
+    "use_key_equivalents": true,
     "bindings": {
       "enter": "editor::ConfirmCompletion",
-      "shift-tab": "editor::ContextMenuPrevious",
+      "shift-enter": "editor::Newline",
+      "j j": "vim::NormalBefore",
+      "j k": "vim::NormalBefore",
       "tab": "editor::ContextMenuNext",
+      "shift-tab": "editor::ContextMenuPrevious",
       "g g": "editor::ContextMenuFirst",
       "shift-G": "editor::ContextMenuLast"
     }
@@ -84,7 +126,11 @@
       "cmd-6": ["pane::ActivateItem", 5],
       "cmd-7": ["pane::ActivateItem", 6],
       "cmd-8": ["pane::ActivateItem", 7],
-      "cmd-9": ["pane::ActivateItem", 8]
+      "cmd-9": ["pane::ActivateItem", 8],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
     }
   },
   {
@@ -94,14 +140,23 @@
     }
   },
   {
-    "context": "Terminal",
+    "context": "GitPanel",
     "bindings": {
-      "ctrl-w t": "workspace::ToggleZoom",
-      "ctrl-u": "terminal::Clear"
+      ", q": "git_panel::Close",
+      ", n": "project_panel::ToggleFocus",
+      "cmd-shift-g": "git_panel::ToggleFocus"
     }
   },
   {
-    "context": "Dock",
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-w t": "workspace::ToggleZoom",
+      "ctrl-u": "terminal::Clear",
+      "ctrl-l": ["terminal::SendKeystroke", "ctrl-l"]
+    }
+  },
+  {
+    "context": "Dock || Terminal || Editor || CommitEditor",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
@@ -110,10 +165,37 @@
     }
   },
   {
-    "context": "Workspace",
+    "context": "ProjectPanel && not_editing",
     "bindings": {
-      ", b": ["task::Spawn", { "task_name": "Go Build" }],
-      ", a": ["task::Spawn", { "task_name": "Go Alternative" }]
+      ", n": "project_panel::ToggleFocus",
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      // Close project panel as project file panel on the right
+      ", q": "workspace::ToggleLeftDock",
+      ", e": "workspace::ToggleLeftDock",
+      ":": "command_palette::Toggle",
+      "%": "project_panel::NewFile",
+      "/": "project_panel::NewSearchInDirectory",
+      "enter": "project_panel::OpenPermanent",
+      "escape": "project_panel::ToggleFocus",
+      "h": "project_panel::CollapseSelectedEntry",
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "l": "project_panel::ExpandSelectedEntry",
+      "o": "project_panel::OpenPermanent",
+      "s": "project_panel::Open",
+      "shift-d": "project_panel::Delete",
+      "shift-r": "project_panel::Rename",
+      "t": "project_panel::OpenPermanent",
+      "v": "project_panel::OpenPermanent",
+      "shift-g": "menu::SelectLast",
+      "g g": "menu::SelectFirst",
+      "-": "project_panel::SelectParent"
     }
   }
 ]

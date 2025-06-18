@@ -11,18 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- ChangeBackground changes the background mode based on macOS's `Appearance
--- setting. 
-local function change_background()
-  local m = vim.fn.system("defaults read -g AppleInterfaceStyle")
-  m = m:gsub("%s+", "") -- trim whitespace
-  if m == "Dark" then
-    vim.o.background = "dark" 
-  else
-    vim.o.background = "light" 
-  end
-end
-
 -- run :GoBuild or :GoTestCompile based on the go file
 local function build_go_files()
   if vim.endswith(vim.api.nvim_buf_get_name(0), "_test.go") then
@@ -42,11 +30,19 @@ require("lazy").setup({
     "ellisonleao/gruvbox.nvim", 
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function ()
-      change_background()
       require("gruvbox").setup({
         contrast = "hard"
       })
       vim.cmd([[colorscheme gruvbox]])
+    end,
+  },
+
+  -- automatic dark mode
+  -- requires: brew install cormacrelf/tap/dark-notify
+  { 
+    "cormacrelf/dark-notify",
+    config = function ()
+      require("dark_notify").run()
     end,
   },
 
@@ -634,6 +630,17 @@ vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('i', 'jj', '<ESC>')
 vim.keymap.set('i', 'jk', '<ESC>')
 
+-- Copy current filepath to system clipboard (relative to git root, fallback to absolute path)
+vim.keymap.set('n', '<Leader>e', function()
+  local git_prefix = vim.fn.system('git rev-parse --show-prefix'):gsub('\n', '')
+  if vim.v.shell_error == 0 then
+    local relative_path = git_prefix .. vim.fn.expand('%')
+    vim.fn.setreg('+', relative_path)
+  else
+    vim.fn.setreg('+', vim.fn.expand('%:p'))
+  end
+end, { silent = true })
+
 -- Remove search highlight
 vim.keymap.set('n', '<Leader><space>', ':nohlsearch<CR>')
 
@@ -650,6 +657,8 @@ local function stay_star()
   vim.fn.winrestview(sview)
 end
 vim.keymap.set('n', '*', stay_star, {noremap = true, silent = true})
+
+
 
 -- We don't need this keymap, but here we are. If I do a ctrl-v and select
 -- lines vertically, insert stuff, they get lost for all lines if we use
@@ -680,6 +689,11 @@ vim.keymap.set('n', 'Y', 'y$')
 -- we don't use netrw (because of nvim-tree), hence re-implement gx to open
 -- links in browser
 vim.keymap.set("n", "gx", '<Cmd>call jobstart(["open", expand("<cfile>")], {"detach": v:true})<CR>')
+
+if vim.fn.getenv("TERM_PROGRAM") == "ghostty" then
+  vim.opt.title = true
+  vim.opt.titlestring = "%{getcwd()}/%{bufname()}"
+end
 
 -- Open help window in a vertical split to the right.
 vim.api.nvim_create_autocmd("BufWinEnter", {
