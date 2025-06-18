@@ -7,13 +7,14 @@ sync:
 	mkdir -p ~/.tmux/
 	mkdir -p ~/.claude
 
-
 	[ -f ~/.config/fish/config.fish ] || ln -s $(PWD)/config.fish ~/.config/fish/config.fish
 	[ -d ~/.config/fish/functions/ ] || ln -s $(PWD)/fish/functions ~/.config/fish/functions
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.config/nvim/init.lua ] || ln -s $(PWD)/init.lua ~/.config/nvim/init.lua
 	[ -f ~/.tigrc ] || ln -s $(PWD)/tigrc ~/.tigrc
 	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
+	[ -f ~/.gitconfig-personal ] || ln -s $(PWD)/gitconfig-personal ~/.gitconfig-personal
+	[ -f ~/.gitconfig-professional ] || ln -s $(PWD)/gitconfig-professional ~/.gitconfig-professional
 	[ -f ~/.agignore ] || ln -s $(PWD)/agignore ~/.agignore
 	[ -f ~/.config/ghostty/config ] || ln -s $(PWD)/ghostty.config ~/.config/ghostty/config
 
@@ -37,6 +38,8 @@ clean:
 	rm -rf ~/.config/fish/functions/
 	rm -f ~/.tigrc
 	rm -f ~/.gitconfig
+	rm -f ~/.gitconfig-personal
+	rm -f ~/.gitconfig-professional
 	rm -f ~/.agignore
 	rm -f ~/.config/ghostty/config
 	rm -f ~/.config/zed/settings.json

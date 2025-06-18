@@ -46,6 +46,6 @@ bind \cr _atuin_search
 bind -M insert \cr _atuin_search
 
 # The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/fatih/Code/google-cloud-sdk/path.fish.inc' ]; . '/Users/fatih/Code/google-cloud-sdk/path.fish.inc'; end
+# if [ -f '~/Code/google-cloud-sdk/path.fish.inc' ]; . '~/Code/google-cloud-sdk/path.fish.inc'; end
 
 # status --is-interactive; and rbenv init - fish | source
