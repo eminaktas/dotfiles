@@ -1,4 +1,4 @@
-set -gxp PATH $HOME/go/bin $HOME/.local/bin /usr/local/opt/python@3.11/libexec/bin /usr/local/sbin /opt/homebrew/bin /opt/homebrew/opt/node@20/bin /opt/homebrew/opt/postgresql@17/bin
+set -gxp PATH $HOME/go/bin $HOME/.local/bin /usr/local/opt/python@3.11/libexec/bin /usr/local/sbin /opt/homebrew/bin /opt/homebrew/opt/node@20/bin /opt/homebrew/opt/postgresql@17/bin $HOME/.cargo/bin
 set -gx GOBIN $HOME/go/bin
 set -gx EDITOR nvim
 set -gx FZF_CTRL_T_COMMAND nvim
@@ -41,10 +41,7 @@ set -gx CPPFLAGS "-I/opt/homebrew/opt/node@20/include"
 
 
 set -gx ATUIN_NOBIND "true"
-status --is-interactive; atuin init fish | source
-
-bind \cr _atuin_search
-bind -M insert \cr _atuin_search
+status --is-interactive; and atuin init fish | source
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '~/Code/google-cloud-sdk/path.fish.inc' ]; . '~/Code/google-cloud-sdk/path.fish.inc'; end
