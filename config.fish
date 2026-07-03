@@ -1,3 +1,9 @@
+# Nix - source before PATH setup so nix paths are available
+set -e __ETC_PROFILE_NIX_SOURCED
+if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+end
+
 set -gxp PATH $HOME/go/bin $HOME/.local/bin /usr/local/opt/python@3.11/libexec/bin /usr/local/sbin /opt/homebrew/bin /opt/homebrew/opt/node@20/bin /opt/homebrew/opt/postgresql@17/bin $HOME/.cargo/bin
 set -gx GOBIN $HOME/go/bin
 set -gx EDITOR nvim
@@ -24,6 +30,9 @@ set -g __fish_git_prompt_color_branch cyan --dim
 # don't show any greetings
 set fish_greeting ""
 
+# suppress direnv verbose output
+# set -x DIRENV_LOG_FORMAT ""
+
 # don't describe the command for darwin
 # https://github.com/fish-shell/fish-shell/issues/6270
 function __fish_describe_command; end
@@ -32,8 +41,8 @@ function __fish_describe_command; end
 # It contains work related stuff, some functions, aliases etc...
 source ~/.private.fish
 
-set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
+fish_add_path --global "/usr/local/opt/openssl@1.1/bin"
+fish_add_path --global "/usr/local/opt/mysql-client/bin"
 
 # node, needed for developing my theme at arslan.io
 set -gx LDFLAGS "-L/opt/homebrew/opt/node@20/lib"
@@ -46,4 +55,8 @@ status --is-interactive; and atuin init fish | source
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '~/Code/google-cloud-sdk/path.fish.inc' ]; . '~/Code/google-cloud-sdk/path.fish.inc'; end
 
-# status --is-interactive; and rbenv init - fish | source
+status --is-interactive; and command -q rbenv; and rbenv init - fish | source
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
