@@ -112,9 +112,7 @@ brew "mkcert"
 brew "protobuf"
 # Open source relational database management system
 brew "mysql", restart_service: :changed
-# Open source relational database management system
 brew "mysql-client"
-# Open source relational database management system
 brew "mysql@8.4", restart_service: :changed
 # Incremental parsing library
 brew "tree-sitter"
@@ -138,7 +136,6 @@ brew "postgresql@17", restart_service: :changed
 brew "protoc-gen-go"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.11"
-# Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # Generic machine emulator and virtualizer
 brew "qemu"
@@ -239,3 +236,26 @@ cargo "fre"
 cargo "protobuf-codegen"
 npm "@tryghost/ghst"
 npm "vercel"
+brew "heroku/brew/heroku"
+brew "skeema/tap/skeema"
+brew "kubernetes-cli"
+brew "crane"
+brew "ansible"
+brew "lima"
+brew "minikube"
+brew "gawk"
+brew "cilium-cli"
+brew "kubectx"
+brew "stern"
+brew "krew"
+brew "kind"
+brew "golangci-lint"
+brew "gosec"
+brew "go-critic"
+brew "maven"
+brew "mage"
+brew "goreleaser"
+cask "aws-vault"
+cask "google-cloud-sdk"
+brew "httpie"
+brew "atuin"
